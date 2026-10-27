@@ -10,7 +10,7 @@
   --line: #e7dfcc;
   --muted: #5f5a52;
   --ink: #1f1e1c;
-  --font-serif: "Cantata One", Georgia, "Times New Roman", serif;
+  --font-serif: "Play", "Segoe UI", system-ui, sans-serif;
   --gold-gradient: linear-gradient(135deg, #f0c048 0%, #c8962f 48%, #9a6b1c 100%);
 }
 
@@ -226,7 +226,7 @@ body .btn-ghost svg { color: var(--gold-light); }
 body .btn-ghost:hover { color: #141311; border-color: transparent; background: var(--gold-metal); }
 body .btn-ghost:hover svg { color: #141311; }
 
-/* ===== Títulos em maiúsculas e minúsculas, sem negrito falso (Cantata One só tem peso 400) ===== */
+/* ===== Títulos em maiúsculas e minúsculas, peso regular ===== */
 h1, h2, h3, h4, h5, h6 { text-transform: none; letter-spacing: -.01em; font-weight: 400; }
 .hero-h1 { font-size: clamp(2.2rem, 4.6vw, 4.2rem); letter-spacing: .01em; }
 .section-title { font-size: clamp(1.75rem, 3.3vw, 3rem); line-height: 1.12; }
@@ -311,11 +311,11 @@ h1, .hero-h1 { text-transform: none !important; font-weight: 400 !important; }
   .section-title { font-size: clamp(1.45rem, 6.6vw, 2rem); }
 }
 
-/* ===== Texto em sans-serif leve (Jost); títulos seguem na serifada ===== */
-:root { --font: "Jost", "Segoe UI", system-ui, sans-serif; }
+/* ===== Fonte Play em todo o site (títulos e texto) ===== */
+:root { --font: "Play", "Segoe UI", system-ui, sans-serif; }
 body, button, input, select, textarea, .btn, .nav, .eyebrow, .pill, small { font-family: var(--font); }
 body { font-size: 1.06rem; font-weight: 400; }
-strong, b { font-weight: 500; }
+strong, b { font-weight: 700; }
 .btn, .nav > a, .mega-menu summary, .eyebrow, .card-index, .problem-num, .conexao-index, .outcome-index, .situacao-num { letter-spacing: .02em; }
 
 /* ===== Emblema em órbita (componente) ===== */
@@ -783,5 +783,5 @@ img { max-width: 100%; }
 /* Palavras longas (e-mail, URL) quebram em vez de estourar a largura no celular */
 main p, main li, main td, main dd { overflow-wrap: break-word; }
 
-/* Cantata One só tem peso 400: qualquer peso maior vira negrito falso */
+/* Títulos no peso regular da Play */
 h1, h2, h3, h4, h5, h6, .hero-slide-title, .glossary-home-subtitle { font-weight: 400 !important; }

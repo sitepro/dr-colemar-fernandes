@@ -1,0 +1,26 @@
+# Cabeçalhos de segurança e cache (Cloudflare Pages e Netlify leem este arquivo)
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS e JS sem hash no nome: cache curto para atualizações aparecerem
+/assets/css/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8

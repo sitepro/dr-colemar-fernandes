@@ -10,7 +10,7 @@
   --line: #e7dfcc;
   --muted: #5f5a52;
   --ink: #1f1e1c;
-  --font-serif: "Play", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --gold-gradient: linear-gradient(135deg, #f0c048 0%, #c8962f 48%, #9a6b1c 100%);
 }
 
@@ -311,8 +311,8 @@ h1, .hero-h1 { text-transform: none !important; font-weight: 400 !important; }
   .section-title { font-size: clamp(1.45rem, 6.6vw, 2rem); }
 }
 
-/* ===== Fonte Play em todo o site (títulos e texto) ===== */
-:root { --font: "Play", "Segoe UI", system-ui, sans-serif; }
+/* ===== Fonte Playfair Display em todo o site (títulos e texto) ===== */
+:root { --font: "Playfair Display", Georgia, "Times New Roman", serif; }
 body, button, input, select, textarea, .btn, .nav, .eyebrow, .pill, small { font-family: var(--font); }
 body { font-size: 1.06rem; font-weight: 400; }
 strong, b { font-weight: 700; }
@@ -783,7 +783,7 @@ img { max-width: 100%; }
 /* Palavras longas (e-mail, URL) quebram em vez de estourar a largura no celular */
 main p, main li, main td, main dd { overflow-wrap: break-word; }
 
-/* Títulos no peso regular da Play */
+/* Títulos no peso regular */
 h1, h2, h3, h4, h5, h6, .hero-slide-title, .glossary-home-subtitle { font-weight: 400 !important; }
 
 /* Sem caixa alta no site: menu, títulos, chamadas e rótulos em letras normais */
@@ -873,3 +873,47 @@ body *:not(svg):not(path) { text-transform: none !important; }
   .blog-hero-numeros div { min-width: 0; flex: 1 1 40%; }
   .post-byline time { margin-left: 0; }
 }
+
+/* ===== Ícones soltos: sem círculo, sem caixa, sem fundo (pedido do cliente) ===== */
+.service-card-icon, .icon-box, .situacao-icone, .conexao-icone, .doc-card-icon, .glossary-home-icon,
+.outcome-icon, .product-icon, .trail-icon, .ai-summary-icon, .move-icon, .presence-icon, .editoria-icon,
+.mega-area-icon, .mega-link-icon, .mapa-icone, .footer-area-icone, .about-emblema-badge > span,
+.contact-channel:not(.is-whatsapp) .contact-channel-icon, .glossary-home-cta-icon, .footer-shortcut-icon,
+.aviso-cookies-icone, .blog-capa-icone, .page-hero-icon {
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: var(--gold) !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.service-card-icon svg, .icon-box svg, .situacao-icone svg, .conexao-icone svg, .doc-card-icon svg,
+.outcome-icon svg, .product-icon svg, .trail-icon svg, .move-icon svg, .presence-icon svg, .glossary-home-icon svg { width: 34px; height: 34px; }
+.mega-area-icon svg, .mapa-icone svg, .contact-channel-icon svg, .about-emblema-badge > span svg { width: 26px; height: 26px; }
+.contact-channel:not(.is-whatsapp):hover .contact-channel-icon, .glossary-home-cta:hover .glossary-home-cta-icon { color: var(--gold-dark) !important; background: none !important; }
+/* Na capa dos posts, ícone grande e dourado direto sobre o preto */
+.blog-capa-icone { color: var(--gold-light) !important; filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .5)); }
+.blog-capa-icone svg { width: 54px; height: 54px; stroke-width: 1.4; }
+.blog-destaque .blog-capa-icone svg { width: 110px; height: 110px; }
+
+/* Primeira dobra: emblema e ícone flutuando, sem o disco redondo atrás */
+.hero-logo-core {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.hero-logo-core::before, .hero-logo-core::after, .hero-logo-orbit::before, .hero-logo-orbit::after { display: none !important; }
+.hero-logo-core img { width: min(100%, 340px) !important; }
+.page-hero-icon svg { width: 140px; height: 140px; color: var(--gold-light); filter: drop-shadow(0 14px 28px rgba(0, 0, 0, .55)); }
+
+/* Grade central de 1440px no computador */
+:root { --max: 1440px; }
+
+/* Sem círculos decorativos nas seções (arcos do topo, cantos dos cards e painéis) */
+.hero::before, .hero::after, .page-hero-colemar::after, .service-card::after,
+.cta-panel::after, .var-banner::after { display: none !important; }
+.hero-logo-orbit, .hero-logo-stage { background: none !important; box-shadow: none !important; border: 0 !important; }

@@ -458,6 +458,42 @@
     }));
   }
 
+  // Blog: busca por título e resumo e filtro por área (o destaque some quando há filtro)
+  const blog = document.querySelector('[data-blog]');
+  if (blog) {
+    const busca = blog.querySelector('[data-blog-busca]');
+    const botoes = blog.querySelectorAll('[data-blog-area]');
+    const vazio = blog.querySelector('[data-blog-vazio]');
+    const destaque = blog.querySelector('.blog-destaque');
+    const lista = blog.querySelector('[data-blog-lista]');
+    let area = '';
+    const semAcento = (t) => t.normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const filtrar = () => {
+      const termo = semAcento((busca.value || '').trim().toLowerCase());
+      const filtrando = Boolean(termo || area);
+      // Com filtro, o post em destaque entra na grade para não ficar de fora da busca
+      if (destaque) {
+        const card = destaque.querySelector('[data-blog-item]') || lista.querySelector('[data-blog-item].veio-do-destaque');
+        if (card && filtrando && card.parentElement === destaque) { card.classList.add('veio-do-destaque'); lista.prepend(card); }
+        if (card && !filtrando && card.parentElement === lista) { card.hidden = false; destaque.append(card); }
+        destaque.hidden = filtrando;
+      }
+      let visiveis = 0;
+      lista.querySelectorAll('[data-blog-item]').forEach((card) => {
+        const mostra = (!area || card.dataset.area === area) && (!termo || semAcento(card.dataset.busca).includes(termo));
+        card.hidden = !mostra;
+        if (mostra) visiveis += 1;
+      });
+      vazio.hidden = visiveis > 0 || !filtrando;
+    };
+    busca.addEventListener('input', filtrar);
+    botoes.forEach((botao) => botao.addEventListener('click', () => {
+      area = botao.dataset.blogArea;
+      botoes.forEach((b) => b.classList.toggle('is-ativo', b === botao));
+      filtrar();
+    }));
+  }
+
   // Balão do botão flutuante: aparece depois de alguns segundos, "digitando" e depois a oferta.
   const balao = document.querySelector('[data-wa-bubble]');
   function esconderBalao() {

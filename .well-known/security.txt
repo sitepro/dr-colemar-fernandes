@@ -1,5 +1,5 @@
 Contact: https://colemarfernandes.com.br/agendar-atendimento/
-Contact: mailto:contato@colemarfernandes.com.br
+Contact: mailto:colemar.advogado@gmail.com
 Expires: 2027-10-27T00:00:00.000Z
 Preferred-Languages: pt, en
 Canonical: https://colemarfernandes.com.br/.well-known/security.txt

@@ -18,7 +18,7 @@
     {"src": "/assets/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
   ],
   "shortcuts": [
-    {"name": "Agendar atendimento", "url": "/agendar-atendimento/", "icons": [{"src": "/assets/img/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Agendar atendimento", "url": "/contato/", "icons": [{"src": "/assets/img/icon-192.png", "sizes": "192x192"}]},
     {"name": "Áreas de atuação", "url": "/#areas", "icons": [{"src": "/assets/img/icon-192.png", "sizes": "192x192"}]},
     {"name": "Onde fica", "url": "/#onde-fica", "icons": [{"src": "/assets/img/icon-192.png", "sizes": "192x192"}]}
   ]

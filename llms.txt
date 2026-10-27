@@ -13,7 +13,6 @@
 
 - [Advogado em Goiânia](https://colemarfernandes.com.br/): visão geral do escritório, áreas, atendimento e endereço
 - [O escritório](https://colemarfernandes.com.br/sobre/): quem é Colemar Fernandes e como o escritório trabalha
-- [Agendar atendimento](https://colemarfernandes.com.br/agendar-atendimento/)
 - [Contato](https://colemarfernandes.com.br/contato/): WhatsApp, telefone, e-mail, endereço e mapa
 - [Glossário jurídico](https://colemarfernandes.com.br/glossario/): termos definidos no dicionário, na lei, na prática e com exemplo
 - [Blog](https://colemarfernandes.com.br/blog/): artigos que respondem dúvidas comuns, com a lei citada

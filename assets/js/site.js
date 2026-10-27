@@ -369,24 +369,64 @@
   }
 
   // Agendamento: monta a mensagem e abre o WhatsApp do escritório (nada é gravado em servidor).
-  const contactForm = document.querySelector('[data-contact-form]');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
+  document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
-      const data = new FormData(contactForm);
-      const message = [
-        'Olá, quero agendar um atendimento no Colemar Fernandes Advogados.',
-        `Nome: ${data.get('nome') || ''}`,
-        `Assunto: ${data.get('area') || ''}`,
-        `Melhor período: ${data.get('periodo') || ''}`
-      ].join('\n');
-      const numero = contactForm.dataset.whatsapp;
-      const aviso = contactForm.querySelector('[data-form-aviso]');
+      const data = new FormData(form);
+      const linhas = [form.dataset.intro || 'Olá, quero agendar um atendimento no Colemar Fernandes Advogados.'];
+      if (data.get('nome')) linhas.push(`Nome: ${data.get('nome')}`);
+      if (data.get('area')) linhas.push(`Assunto: ${data.get('area')}`);
+      if (data.get('periodo')) linhas.push(`Melhor período: ${data.get('periodo')}`);
+      if (data.get('mensagem')) linhas.push(`Recado: ${data.get('mensagem')}`);
+      const numero = form.dataset.whatsapp;
+      const aviso = form.querySelector('[data-form-aviso]');
       if (!numero) {
         if (aviso) aviso.hidden = false;
         return;
       }
-      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener,noreferrer');
+      const modalAberto = form.closest('dialog');
+      if (modalAberto) modalAberto.close();
     });
+  });
+
+  // Popup de agendamento: todo link [data-wa-popup] abre o formulário; sem suporte a <dialog>, segue o link do wa.me.
+  const modal = document.querySelector('[data-wa-modal]');
+  const lembrar = (chave, valor) => { try { sessionStorage.setItem(chave, valor); } catch (e) { /* navegação privada */ } };
+  const lembrado = (chave) => { try { return sessionStorage.getItem(chave); } catch (e) { return null; } };
+  if (modal && typeof modal.showModal === 'function') {
+    document.addEventListener('click', (event) => {
+      const gatilho = event.target.closest('[data-wa-popup]');
+      if (!gatilho) return;
+      event.preventDefault();
+      esconderBalao();
+      modal.showModal();
+      document.documentElement.classList.add('wa-modal-open');
+      const primeiro = modal.querySelector('input[name="nome"]');
+      if (primeiro && window.matchMedia('(min-width: 641px)').matches) primeiro.focus();
+    });
+    modal.querySelector('[data-wa-close]')?.addEventListener('click', () => modal.close());
+    modal.addEventListener('click', (event) => { if (event.target === modal) modal.close(); });
+    modal.addEventListener('close', () => document.documentElement.classList.remove('wa-modal-open'));
+  }
+
+  // Balão do botão flutuante: aparece depois de alguns segundos, "digitando" e depois a oferta.
+  const balao = document.querySelector('[data-wa-bubble]');
+  function esconderBalao() {
+    if (!balao || balao.hidden) return;
+    balao.classList.remove('is-open');
+    setTimeout(() => { balao.hidden = true; }, 250);
+    lembrar('waBalao', 'fechado');
+  }
+  if (balao && !lembrado('waBalao')) {
+    setTimeout(() => {
+      balao.hidden = false;
+      requestAnimationFrame(() => balao.classList.add('is-open'));
+      setTimeout(() => {
+        balao.querySelector('[data-wa-typing]').hidden = true;
+        balao.querySelector('[data-wa-msg]').hidden = false;
+      }, 1600);
+    }, 4000);
+    balao.querySelector('[data-wa-bubble-close]').addEventListener('click', esconderBalao);
   }
 })();

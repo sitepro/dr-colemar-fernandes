@@ -979,3 +979,67 @@ h1, h2, h3, h4, h5, h6, .hero-h1, .hero-slide-title, .glossary-home-subtitle { f
 .glossario-card-icone svg { width: 30px; height: 30px; stroke-width: 1.6; }
 .glossario-card:hover .glossario-card-icone { color: var(--gold-dark); }
 .termo-hero .blog-hero-numeros { margin-top: 26px; }
+
+/* ===== Primeira dobra limpa: hero compacto, título em até duas linhas ===== */
+.page-hero { min-height: 0; }
+.page-hero .page-hero-inner, .page-hero .post-hero-inner, .blog-hero .page-hero-inner { padding: 64px 0 52px; }
+.page-hero-grid { grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; }
+.page-hero-grid .hero-logo-orbit { width: 260px; }
+.page-hero-grid .hero-logo-core img { max-width: 220px; height: auto; }
+.page-hero-icon svg { width: 120px; height: 120px; }
+.page-hero h1, .page-hero .page-h1, .post-hero .post-h1 { max-width: none; margin-bottom: 18px; line-height: 1.12; text-wrap: balance; }
+.page-hero h1.titulo-curto { font-size: clamp(2rem, 3.6vw, 3.3rem); }
+.page-hero h1.titulo-longo { font-size: clamp(1.8rem, 2.9vw, 2.7rem); }
+.page-hero h1.titulo-xlongo { font-size: clamp(1.6rem, 2.4vw, 2.25rem); }
+.page-hero .page-lead { margin-bottom: 0; font-size: 1.05rem; line-height: 1.6; }
+.page-hero .hero-actions { margin-top: 24px; }
+.page-hero .eyebrow { margin-bottom: 12px; }
+.page-hero .service-facts { margin-top: 26px; }
+.page-hero + .section, .page-hero + .section-white { padding-top: 56px; }
+.post-hero-tags { margin: 0 0 14px; }
+.post-byline { margin-top: 22px; padding-top: 18px; }
+
+/* Resposta direta na primeira dobra (blog e glossário) */
+.hero-resposta { max-width: 900px; margin: 4px 0 0; padding: 18px 22px; border: 1px solid rgba(240, 192, 72, .28); border-left: 4px solid var(--gold); border-radius: 14px; background: rgba(255, 255, 255, .05); }
+.hero-resposta > span { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--gold-light); font-size: .82rem; font-weight: 600; }
+.hero-resposta > span svg { width: 16px; height: 16px; }
+.page-hero .hero-resposta p { max-width: none; margin: 0; color: #f3efe6; font-size: 1.05rem; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .page-hero-grid { grid-template-columns: 1fr; }
+  .page-hero-grid .hero-logo-stage { display: none; }
+  .page-hero .page-hero-inner, .page-hero .post-hero-inner, .blog-hero .page-hero-inner { padding: 50px 0 34px; }
+  .page-hero h1.titulo-curto { font-size: 1.95rem; }
+  .page-hero h1.titulo-longo { font-size: 1.6rem; }
+  .page-hero h1.titulo-xlongo { font-size: 1.38rem; }
+  .page-hero .page-lead { font-size: .98rem; }
+  .page-hero .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .page-hero .hero-actions .btn { min-height: 46px; padding: 10px 12px; font-size: .9rem; }
+  .page-hero .service-facts, .blog-hero-numeros { display: none; }
+  .hero-resposta { padding: 14px 16px; }
+  .page-hero .hero-resposta p { font-size: .97rem; }
+  .post-byline { margin-top: 18px; padding-top: 14px; }
+  .page-hero + .section, .page-hero + .section-white { padding-top: 36px; }
+}
+h2, h3, .section-title { text-wrap: balance; }
+@media (max-width: 900px) {
+  .page-hero .hero-actions .btn { gap: 6px; padding: 10px 8px; font-size: .84rem; white-space: nowrap; }
+  .page-hero .hero-actions .btn svg { width: 16px; height: 16px; flex: none; }
+  .page-hero h1.titulo-longo { font-size: 1.5rem; }
+  .page-hero h1.titulo-xlongo { font-size: 1.3rem; line-height: 1.18; }
+}
+@media (max-width: 900px) {
+  .post-hero h1.titulo-xlongo { font-size: 1.22rem; }
+}
+/* Slider da home: título da área + definição em dois blocos curtos */
+.hero-slide p { max-width: 640px; margin: 0 0 10px; font-size: 1rem; line-height: 1.6; }
+.hero-slide-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 2px; color: var(--gold-light); font-size: .92rem; font-weight: 600; text-decoration: none; }
+.hero-slide-link::after { content: "→"; }
+.hero-slide-link:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .home .hero-proof { display: none; }
+  .home .hero .hero-h1 { margin-bottom: 14px; }
+  .home .hero-slide-title { margin-bottom: 10px; font-size: 1.12rem; }
+  .home .hero-slide p { margin-bottom: 8px; font-size: .94rem; line-height: 1.55; }
+  .home .hero .hero-ctas { margin-top: 16px; }
+}

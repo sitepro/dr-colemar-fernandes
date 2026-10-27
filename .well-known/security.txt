@@ -1,6 +1,6 @@
-Contact: https://colemarfernandes.adv.br/agendar-atendimento/
+Contact: https://colemarfernandes.com.br/agendar-atendimento/
 Contact: mailto:contato@colemarfernandes.com.br
 Expires: 2027-10-27T00:00:00.000Z
 Preferred-Languages: pt, en
-Canonical: https://colemarfernandes.adv.br/.well-known/security.txt
-Policy: https://colemarfernandes.adv.br/politica-de-privacidade/
+Canonical: https://colemarfernandes.com.br/.well-known/security.txt
+Policy: https://colemarfernandes.com.br/politica-de-privacidade/

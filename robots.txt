@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-# Assistentes de IA: resumo do escritório em https://colemarfernandes.adv.br/llms.txt
+# Assistentes de IA: resumo do escritório em https://colemarfernandes.com.br/llms.txt
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot
@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://colemarfernandes.adv.br/sitemap.xml
+Sitemap: https://colemarfernandes.com.br/sitemap.xml

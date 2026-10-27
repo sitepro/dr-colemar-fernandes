@@ -578,3 +578,11 @@ html.wa-modal-open { overflow: hidden; }
 @media (max-width: 1050px) { .contact-layout, .contact-map-card { grid-template-columns: minmax(0, 1fr); } }
 .contact-channel strong { overflow-wrap: anywhere; }
 @media (max-width: 620px) { .contact-channel strong { white-space: normal; font-size: .92rem; } }
+
+/* Contato: sede e segundo endereço */
+.contact-map-copy address small { display: block; margin-bottom: 4px; color: var(--gold-dark); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.contact-map-copy address.is-segundo { padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; font-weight: 500; }
+.contact-map-copy address.is-segundo a { color: var(--gold-dark); text-decoration: underline; }
+
+/* Emblema: sem anéis girando nem bolinhas em órbita, só a flutuação do núcleo */
+.hero-logo-ring, .hero-logo-dot { display: none !important; }

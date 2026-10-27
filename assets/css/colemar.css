@@ -35,7 +35,7 @@ h1, h2, h3, .display, .section-title, .hero-h1, .hero-slide-title, .cta-panel h2
   .site-header .nav > a:hover, .site-header .mega-menu summary:hover, .site-header .mega-menu[open] summary { color: var(--gold-light); }
   .site-header .mega-menu summary .nav-chevron { color: var(--gold-light); }
   /* Caixa alta só nos itens da barra; o painel do mega menu não muda */
-  .site-header .nav > a, .site-header .mega-menu > summary { text-transform: uppercase; font-size: .8rem; letter-spacing: .06em; }
+  .site-header .nav > a, .site-header .mega-menu > summary { font-size: .95rem; letter-spacing: 0; }
 }
 .site-header .menu-toggle { color: #fff; border-color: rgba(255,255,255,.25); }
 .header-cta { min-height: 44px; }
@@ -785,3 +785,7 @@ main p, main li, main td, main dd { overflow-wrap: break-word; }
 
 /* Títulos no peso regular da Play */
 h1, h2, h3, h4, h5, h6, .hero-slide-title, .glossary-home-subtitle { font-weight: 400 !important; }
+
+/* Sem caixa alta no site: menu, títulos, chamadas e rótulos em letras normais */
+body *:not(svg):not(path) { text-transform: none !important; }
+.eyebrow, .sidebar-kicker, .toc strong, .footer-col h3, .footer-kicker, .footer-areas-titulo, .card-index, .marquee-track, .var-banner-kicker, .article-tldr > span, .section-kicker, .mega-column-head > span, .wa-inline-kicker, .wa-modal-kicker, .field-label, .glossario-card-area, .termo-rotulo, .chunk-pergunta { letter-spacing: .01em !important; }

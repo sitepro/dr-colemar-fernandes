@@ -410,6 +410,54 @@
     modal.addEventListener('close', () => document.documentElement.classList.remove('wa-modal-open'));
   }
 
+  // Aviso de privacidade: aparece até a pessoa aceitar; a escolha fica só no navegador dela.
+  const avisoCookies = document.querySelector('[data-cookies]');
+  const aceitouCookies = () => { try { return localStorage.getItem('cfPrivacidade') === 'aceito'; } catch (e) { return false; } };
+  if (avisoCookies && !aceitouCookies()) {
+    setTimeout(() => {
+      avisoCookies.hidden = false;
+      document.documentElement.classList.add('tem-aviso-cookies');
+      requestAnimationFrame(() => avisoCookies.classList.add('is-open'));
+    }, 900);
+    avisoCookies.querySelector('[data-cookies-aceitar]').addEventListener('click', () => {
+      try { localStorage.setItem('cfPrivacidade', 'aceito'); } catch (e) { /* navegação privada */ }
+      avisoCookies.classList.remove('is-open');
+      document.documentElement.classList.remove('tem-aviso-cookies');
+      setTimeout(() => { avisoCookies.hidden = true; }, 300);
+    });
+  }
+
+  // Glossário: busca por nome e filtro por área
+  const glossario = document.querySelector('[data-glossario]');
+  if (glossario) {
+    const busca = glossario.querySelector('[data-glossario-busca]');
+    const botoes = glossario.querySelectorAll('[data-glossario-area]');
+    const vazio = glossario.querySelector('[data-glossario-vazio]');
+    let area = '';
+    const filtrar = () => {
+      const termo = (busca.value || '').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      let visiveis = 0;
+      glossario.querySelectorAll('.glossario-grupo').forEach((grupo) => {
+        let noGrupo = 0;
+        grupo.querySelectorAll('.glossario-card').forEach((card) => {
+          const nome = card.dataset.nome.normalize('NFD').replace(/[̀-ͯ]/g, '');
+          const mostra = (!area || card.dataset.area === area) && (!termo || nome.includes(termo));
+          card.hidden = !mostra;
+          if (mostra) noGrupo += 1;
+        });
+        grupo.hidden = noGrupo === 0;
+        visiveis += noGrupo;
+      });
+      vazio.hidden = visiveis > 0;
+    };
+    busca.addEventListener('input', filtrar);
+    botoes.forEach((botao) => botao.addEventListener('click', () => {
+      area = botao.dataset.glossarioArea;
+      botoes.forEach((b) => b.classList.toggle('is-ativo', b === botao));
+      filtrar();
+    }));
+  }
+
   // Balão do botão flutuante: aparece depois de alguns segundos, "digitando" e depois a oferta.
   const balao = document.querySelector('[data-wa-bubble]');
   function esconderBalao() {
